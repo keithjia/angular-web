@@ -6,6 +6,9 @@ import {Hero} from "./hero";
 export class HeroService {
 
   getHerores(): Promise<Hero[]> {
-    return Promise.resolve(HEROES);
+    return new Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(HEROES), 500);
+    });
   }
 }
