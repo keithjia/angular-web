@@ -5,10 +5,15 @@ import {Hero} from "./hero";
 @Injectable()
 export class HeroService {
 
-  getHerores(): Promise<Hero[]> {
+  getHeroes(): Promise<Hero[]> {
     return new Promise(resolve => {
       // Simulate server latency with 2 second delay
       setTimeout(() => resolve(HEROES), 500);
     });
+  }
+
+  getHero(id: number): Promise<Hero> {
+    return this.getHeroes()
+      .then(heroes => heroes.find(hero => hero.id === id));
   }
 }
